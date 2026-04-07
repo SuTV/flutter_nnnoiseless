@@ -66,12 +66,15 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   @override
   int get rustContentHash => 832027299;
 
-  static const kDefaultExternalLibraryLoaderConfig =
+  static final kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-        stem: 'rust_lib_flutter_nnnoiseless',
+        // stem: 'rust_lib_flutter_nnnoiseless',
+        stem: Platform.isAndroid
+                ? 'rust_lib_flutter_nnnoiseless'
+                : 'flutter_nnnoiseless',
         ioDirectory: 'rust/target/release/',
         webPrefix: 'pkg/',
-        wasmBindgenName: 'wasm_bindgen',
+        // wasmBindgenName: 'wasm_bindgen',
       );
 }
 
